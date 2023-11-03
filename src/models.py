@@ -16,8 +16,8 @@ class User(Base):
     username = Column(String(30), nullable=False, unique=True)
     password = Column(String(250), nullable=False)
     email = Column(String(100), nullable=False, unique=True)
-    comment_id = Column(Integer(), ForeignKey="comment.id")
-    post_id = Column(Integer(), ForeignKey="post.id")
+    comment_id = Column(Integer(), ForeignKey('comment.id'))
+    post_id = Column(Integer(), ForeignKey('post.id'))
     user_followers = relationship("User_Followers", uselist=True, backref='user')
 
 
@@ -38,7 +38,7 @@ class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
     user_post = relationship("User", uselist=True, backref='post')
-    comment_id = Column(Integer(), ForeignKey='commet')
+    comment_id = Column(Integer(), ForeignKey('comment.id'))
     media_id = Column(Integer(), ForeignKey('media.id'))
   
 
